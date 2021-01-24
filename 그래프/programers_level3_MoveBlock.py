@@ -95,7 +95,7 @@ def solution(board):
     cost = 0
     move_dict = {'right':move_right, 'left':move_left, 'up':move_up, 'down':move_down, 'benefit':move_benefit, 'loss':move_loss, 'sustain1':move_sustain1, 'sustain2':move_sustain2}
     visit = set()
-    visit.add((start[0], start[1], d, cost))
+    visit.add((start[0], start[1], d))
     
     queue = [(start[0], start[1], d, cost)]
     while queue:
