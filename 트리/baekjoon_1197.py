@@ -5,6 +5,40 @@
 https://www.acmicpc.net/problem/1197
 
 '''
+# prim algorithm
+
+import heapq
+
+v, e = list(map(int, input().split()))
+
+graph = [[] for _ in range(v)]
+
+for _ in range(e):
+    v1, v2, cost = list(map(int, input().split()))
+    graph[v1- 1].append((v2, cost))
+    graph[v2- 1].append((v1, cost))
+    
+answer = 0
+heap = [(0, 1)]
+visit = [0] * v
+
+while heap:
+    cost, u = heapq.heappop(heap)
+    if visit[u - 1]:
+        continue
+    
+    answer += cost
+    visit[u - 1] = 1
+    for (w, c) in graph[u - 1]:
+        if visit[w - 1]:
+            continue
+        heapq.heappush(heap, (c, w))
+
+print(answer)
+
+
+
+# kruskal algorithm
 
 def find(v):
     return v if par[v]<0 else find(par[v])
